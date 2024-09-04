@@ -1,28 +1,29 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import {
   selectUsersError,
-  selectUsers,
   selectUsersLoading,
 } from "../../redux/users/users-selectors";
 import { setFilters } from "../../redux/filters/filters-actions";
-import { tableHeadItems } from "../../assets/items/tableHeadItems";
-import { Filter } from "../../redux/store.types";
-import { selectFilter } from "../../redux/filters/filters-selectors";
+import { filtersItems } from "../../assets/items/filtersItems";
+import { Filters } from "../../redux/store.types";
+import {
+  selectFilters,
+  selectFilteredUsers,
+} from "../../redux/filters/filters-selectors";
 
 const UsersTable: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const users = useSelector(selectUsers);
+  const users = useSelector(selectFilteredUsers);
   const isLoading = useSelector(selectUsersLoading);
   const error = useSelector(selectUsersError);
-  const filter = useSelector(selectFilter) || {};
+  const filters = useSelector(selectFilters);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    const newFilter: Partial<Filter> = { [name]: value };
-
-    dispatch(setFilters(newFilter));
+    dispatch(setFilters({ [name]: value }));
   };
 
   return (
@@ -34,10 +35,10 @@ const UsersTable: React.FC = () => {
         <table>
           <thead>
             <tr>
-              {tableHeadItems.map(item => {
-                const key = item as keyof Filter;
+              {filtersItems.map(item => {
+                const key = item as keyof Filters;
                 const placeholder = `Filter by ${item}`;
-                let value = filter[key] || "";
+                const value = filters[key];
 
                 return (
                   <th key={item}>

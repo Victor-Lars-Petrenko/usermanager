@@ -1,19 +1,24 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { selectUsers } from "../users/users-selectors";
-import { State, Filter } from "../store.types";
+import { State, Filters } from "../store.types";
+import { filtersItems } from "../../assets/items/filtersItems";
 
-export const selectFilter = (state: State): Filter => state.filter;
+export const selectFilters = (state: State): Filters => state.filters;
 
 export const selectFilteredUsers = createSelector(
-  [selectFilter, selectUsers],
-  (filter, users) => {
+  [selectFilters, selectUsers],
+  (filters, users) => {
     let filteredUsers = users;
 
-    (Object.keys(filter) as Array<keyof Filter>).forEach(key => {
-      const normalizedValue = filter[key]?.trim().toLowerCase();
+    (Object.keys(filters) as Array<keyof Filters>).forEach(key => {
+      if (!filtersItems.includes(key)) {
+        return;
+      }
+
+      const normalizedValue = filters[key]?.trim().toLowerCase();
       if (normalizedValue) {
         filteredUsers = filteredUsers.filter(user =>
-          user[key]?.toString().toLowerCase().includes(normalizedValue)
+          user[key].toLowerCase().includes(normalizedValue)
         );
       }
     });
@@ -21,5 +26,3 @@ export const selectFilteredUsers = createSelector(
     return filteredUsers;
   }
 );
-
-export default selectFilter;

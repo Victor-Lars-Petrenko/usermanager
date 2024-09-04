@@ -1,4 +1,4 @@
 import { createAction } from "@reduxjs/toolkit";
-import { Filter } from "../store.types";
+import { Filters } from "../store.types";
 
-export const setFilters = createAction<Partial<Filter>>("filters/set");
+export const setFilters = createAction<Partial<Filters>>("filters/set");

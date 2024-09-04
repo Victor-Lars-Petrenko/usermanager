@@ -6,7 +6,7 @@ export interface User {
   phone: string;
 }
 
-export type Filter = {
+export type Filters = {
   name: string;
   username: string;
   email: string;
@@ -21,5 +21,5 @@ export interface Users {
 
 export interface State {
   users: Users;
-  filter: Filter;
+  filters: Filters;
 }

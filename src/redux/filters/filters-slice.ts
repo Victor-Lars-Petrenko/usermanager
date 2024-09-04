@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { setFilters } from "./filters-actions";
-import { Filter } from "../store.types";
+import { Filters } from "../store.types";
 
-const initialState: Filter = {
+const initialState: Filters = {
   name: "",
   username: "",
   email: "",
@@ -10,13 +10,13 @@ const initialState: Filter = {
 };
 
 const filterSlice = createSlice({
-  name: "filter",
+  name: "filters",
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder.addCase(
       setFilters,
-      (state, action: PayloadAction<Partial<Filter>>) => {
+      (state, action: PayloadAction<Partial<Filters>>) => {
         return {
           ...state,
           ...action.payload,

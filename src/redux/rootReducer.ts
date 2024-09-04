@@ -6,9 +6,9 @@ import usersReducer from "./users/users-slice";
 import filtersReducer from "./filters/filters-slice";
 
 const persistConfig = {
-  key: "filter",
+  key: "filters",
   storage,
-  whitelist: ["name", "username", "email", "phone"],
+  whitelist: ["filters"],
 };
 
 const persistedFiltersReducer = persistReducer(persistConfig, filtersReducer);
