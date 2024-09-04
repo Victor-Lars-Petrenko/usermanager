@@ -8,7 +8,6 @@ import filtersReducer from "./filters/filters-slice";
 const persistConfig = {
   key: "filters",
   storage,
-  whitelist: ["filters"],
 };
 
 const persistedFiltersReducer = persistReducer(persistConfig, filtersReducer);
