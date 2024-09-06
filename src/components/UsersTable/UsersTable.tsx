@@ -1,6 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 import { setFilters } from "../../redux/filters/filters-actions";
 import {
@@ -17,9 +16,10 @@ import TableBody from "./TableBody";
 import Loader from "../Loader";
 
 import css from "./UsersTable.module.css";
+import useAppDispatch from "../../assets/hooks/useAppDispatch";
 
 const UsersTable: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const users = useSelector(selectFilteredUsers);
   const isLoading = useSelector(selectUsersLoading);
   const error = useSelector(selectUsersError);

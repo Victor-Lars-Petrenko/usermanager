@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../redux/store";
+import useAppDispatch from "../assets/hooks/useAppDispatch";
 import { fetchUsers } from "../redux/users/users-operations";
 import UsersTable from "./UsersTable/UsersTable";
 
 const App: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchUsers());

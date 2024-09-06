@@ -26,6 +26,7 @@ const TableHead: React.FC<TableHeadProps> = ({ filters, onChange }) => {
                 placeholder={placeholder}
                 onChange={onChange}
                 value={value}
+                autoComplete="off"
                 className={css.input}
               />
             </th>
