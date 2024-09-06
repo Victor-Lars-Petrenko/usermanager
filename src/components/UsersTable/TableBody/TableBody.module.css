@@ -1,0 +1,36 @@
+.tableBodyCell {
+  position: relative;
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.tableBodyCell:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -999px;
+  bottom: -999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+
+.tableBodyRow:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (min-width: 481px) {
+  .tableBodyCell {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .tableBodyCell {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { User } from "../../../redux/store.types";
 
+import css from "./TableBody.module.css";
+
 interface TableBodyProps {
   users: User[];
 }
@@ -8,17 +10,14 @@ interface TableBodyProps {
 const TableBody: React.FC<TableBodyProps> = ({ users }) => {
   return (
     <tbody>
-      {users.map(
-        user =>
-          user && (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-            </tr>
-          )
-      )}
+      {users.map(user => (
+        <tr key={user.id} className={css.tableBodyRow}>
+          <td className={css.tableBodyCell}>{user.name}</td>
+          <td className={css.tableBodyCell}>{user.username}</td>
+          <td className={css.tableBodyCell}>{user.email}</td>
+          <td className={css.tableBodyCell}>{user.phone}</td>
+        </tr>
+      ))}
     </tbody>
   );
 };

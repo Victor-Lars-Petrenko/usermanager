@@ -1,14 +1,13 @@
 @import-normalize;
 
-html {
-  margin: 0 auto;
-}
-
 body {
   margin: 0;
+  background: linear-gradient(45deg, #49a09d, #5f2c82);
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 100;
+  min-height: 100vh;
 }
 
 code {
@@ -28,14 +27,6 @@ h5,
 h6,
 p {
   margin: 0;
-}
-
-button {
-  padding: 0;
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-  font-family: inherit;
 }
 
 input {

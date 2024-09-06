@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchUsers } from "./users-operations";
-import { pending, rejected } from "../../assets/functions/redux";
 import { Users, User } from "../store.types";
+import { pending, rejected } from "../../assets/functions/redux";
 
 const initialState: Users = {
   items: [],

@@ -1,0 +1,41 @@
+.tableHeadCell {
+  padding: 0.3rem;
+  font-size: 0.8rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.tableHead {
+  background-color: #55608f;
+}
+
+.tableHeadCell {
+  color: #fff;
+}
+
+@media (min-width: 481px) {
+  .tableHeadCell {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .input {
+    padding: 0.4rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .tableHeadCell {
+    padding: 15px;
+    font-size: 1rem;
+  }
+
+  .input {
+    padding: 0.5rem;
+  }
+}

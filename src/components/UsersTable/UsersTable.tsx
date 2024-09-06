@@ -14,6 +14,9 @@ import {
 
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
+import Loader from "../Loader";
+
+import css from "./UsersTable.module.css";
 
 const UsersTable: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -28,19 +31,29 @@ const UsersTable: React.FC = () => {
   };
 
   return (
-    <main>
-      <h1>User Management Table</h1>
-      {isLoading && <div>Loading...</div>}
-      {error && !isLoading && <div>{error}</div>}
-      <table>
-        <TableHead filters={filters} onChange={handleFilterChange} />
-        {users.length > 0 && !isLoading ? (
-          <TableBody users={users} />
-        ) : (
-          !isLoading && <div>No users are available for your request</div>
+    <>
+      <header className={css.header}>
+        <div className={css.logo}></div>
+        <h1 className={css.title}>User Management Table</h1>
+      </header>
+      <main className={css.container}>
+        {isLoading && <Loader />}
+        {error && !isLoading && <div>{error}</div>}
+        <div className={css.tableWrapper}>
+          <table className={css.table}>
+            <TableHead filters={filters} onChange={handleFilterChange} />
+            {users[0] && !isLoading && <TableBody users={users} />}
+          </table>
+        </div>
+        {!users[0] && !isLoading && (
+          <div className={css.noUsers}>
+            <p className={css.noUsersText}>
+              No users are available for your request
+            </p>
+          </div>
         )}
-      </table>
-    </main>
+      </main>
+    </>
   );
 };
 
